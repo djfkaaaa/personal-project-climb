@@ -13,6 +13,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService service;
+    private final UserRepository repository;
 
     @PostMapping("/login")
     public Map<String,?> login(@RequestBody Map<?,?> paraMap){
@@ -26,6 +27,22 @@ public class UserController {
         return resMap;
     }
 
+    @PostMapping(path = "/api/user")
+    public Map<String, ?> join(@RequestBody Map<String, ?> paramMap){
+       User newUser = repository.save (User.builder()
+                .username((String) paramMap.get("username"))
+                .password((String) paramMap.get("password"))
+                .name((String) paramMap.get("name"))
+                .phoneNumber((String) paramMap.get("phonenumber"))
+                .job((String) paramMap.get("job"))
+                .height(Double.parseDouble((String) paramMap.get("height")))
+                .weight(Double.parseDouble((String) paramMap.get("weight")))
+                .build());
+        System.out.println("db에 저장된 정보 = " + newUser );
+        Map<String,Messenger> mapp = new HashMap<>();
+        mapp.put("messege",Messenger.SUCCESS);
+        return mapp;
+    }
     public Map<String,?>  addUsers() {
         return null;
     }

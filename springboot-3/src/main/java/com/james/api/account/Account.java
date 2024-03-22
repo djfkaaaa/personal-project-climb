@@ -1,13 +1,26 @@
 package com.james.api.account;
+import com.james.api.user.User;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
+@Entity(name = "account")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(exclude = {"id"})
 public class Account {
+
+
+    @Id
+    @Column(name = "account_id",nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToMany(mappedBy = "account")
+    private List<User> user;
+
     private String accountNumber;
     private String accountHolder;
     private Double balance;

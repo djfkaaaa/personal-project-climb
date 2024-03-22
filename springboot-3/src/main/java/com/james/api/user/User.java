@@ -1,26 +1,39 @@
 package com.james.api.user;
 
+import com.james.api.account.Account;
+import jakarta.persistence.*;
 import lombok.*;
 
+@Entity(name = "user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(exclude = {"id"})
 public class User {
+
+    @Id
+    @Column(name = "user_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     private String username;
     private String password;
     private String name;
     private String phoneNumber;
     private Long addressId;
     private String job;
-    private String height;
-    private String weight;
+    private Double height;
+    private Double weight;
 
     @Builder(builderMethodName = "builder")
     public User(Long id, String username, String password,
                 String name, String phoneNumber,
                 Long addressId, String job,
-                String height, String weight) {
+                Double height, Double weight) {
         this.id = id;
         this.username = username;
         this.password = password;

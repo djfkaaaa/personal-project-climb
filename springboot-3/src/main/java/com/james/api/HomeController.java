@@ -16,12 +16,18 @@ public class HomeController {
         String s = service.test();
         return "Welcome to Spring Boot!";
     }
+
+
+
     @PostMapping("/name")
     public Map<String,?> name(@RequestBody Map<String,?> map){
-        String name = (String)map.get("name");
+        String name = (String)map.get("list");
         System.out.println("리퀘스트가 가져온 이름 = " + name);
         Map<String,String> resMap = new HashMap<>();
         resMap.put("name","환영합니다"+name);
         return resMap;
     }
+
+
+
 }
