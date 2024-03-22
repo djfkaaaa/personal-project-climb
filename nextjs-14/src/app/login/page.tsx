@@ -22,7 +22,7 @@ export default function Login(){
     }
     const handleClick = () => {
         alert("ID = " + username)
-        const url = `${SERVER}/login`
+        const url = `${SERVER}/api/login`
         const data = {username, password} // {'name':username, 'password':password}의 축약
         const config = {
             headers:{
