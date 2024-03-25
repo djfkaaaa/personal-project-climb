@@ -18,18 +18,13 @@ export default function join(){
     })
     const {username,password,name,phone,job,height,weight} = inputs;
     const onChange = (e:any) => {
-        const {value, name} = e.target;
+        const {value, name : fieldName } = e.target;
         setInputs(
-            {...inputs,
-                [username] : value,
-                [password] : value,
-                [name] : value,
-                [phone] : value,
-                [job] : value,
-                [height] : value,
-                [weight] : value
-            }
-        )
+             ({
+                ...inputs,
+                [fieldName]: value
+            })
+        );
     }
     const router = useRouter();
 
