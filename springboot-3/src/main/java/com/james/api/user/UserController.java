@@ -2,7 +2,6 @@ package com.james.api.user;
 
 import com.james.api.enums.Messenger;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -15,15 +14,20 @@ public class UserController {
     private final UserService service;
     private final UserRepository repository;
 
-    @PostMapping("/login")
+    @PostMapping("/api/login")
     public Map<String,?> login(@RequestBody Map<?,?> paraMap){
-        Map<String,String> resMap = new HashMap<>();
-        String name = (String)paraMap.get("username");
-        String pw = (String)paraMap.get("password");
-        System.out.println("리퀘스트가 가져온 ID = " + name);
-        System.out.println("리퀘스트가 가져온 PW = " + pw);
-        resMap.put("username", name);
-        resMap.put("password", pw);
+
+        Map<String, Messenger> resMap = new HashMap<>();
+        String username = (String) paraMap.get("username");
+        String pw = (String) paraMap.get("password");
+        User optUser = repository.findByUsername(username).orElse(null);
+        if (optUser == null){
+            resMap.put("message",Messenger.FAIL);
+        } else if (!optUser.getPassword().equals(pw)) {
+            resMap.put("message",Messenger.WRONG_PASSWORD);
+        } else {
+            resMap.put("message",Messenger.SUCCESS);
+        }
         return resMap;
     }
 
@@ -33,7 +37,7 @@ public class UserController {
                 .username((String) paramMap.get("username"))
                 .password((String) paramMap.get("password"))
                 .name((String) paramMap.get("name"))
-                .phoneNumber((String) paramMap.get("phonenumber"))
+                .phoneNumber((String) paramMap.get("phoneNumber"))
                 .job((String) paramMap.get("job"))
                 .height(Double.parseDouble((String) paramMap.get("height")))
                 .weight(Double.parseDouble((String) paramMap.get("weight")))
