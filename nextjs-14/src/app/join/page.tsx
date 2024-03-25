@@ -36,7 +36,7 @@ export default function join(){
     const onClick = () => {
         alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phone + ' ' +' ' +job + ' '+height +' ' +weight)
     const url = `${SERVER}/api/user` 
-    const data = {username,password,name,phone,job,height,weight}
+    const data = {username,password,name,phone,job,height,weight} // 자바의 requestbody
     const config = {
       headers:{
         "Cache-Control": "no-cache",
@@ -46,7 +46,7 @@ export default function join(){
     }}
     axios.post(url,data,config)
     .then(res=>
-        {alert(JSON.stringify(res.data))
+        {alert(JSON.stringify(res.data)) // 자바의 responsebody < return하는 map에 담기는놈
         router.push("/login")
         })
     }
@@ -62,10 +62,10 @@ export default function join(){
     <input type="text" placeholder="Enter username" name="username" onChange={onChange} required/> <br />
 
     <label htmlFor="password"><b>password</b></label>
-    <input type="password" placeholder="Enter password" name="password" onChange={onChange} required/> <br />
+    <input type="text" placeholder="Enter password" name="password" onChange={onChange} required/> <br />
 
     <label htmlFor="name"><b>name</b></label>
-    <input type="text" placeholder="Enter name" name="password" onChange={onChange} required/> <br />
+    <input type="text" placeholder="Enter name" name="name" onChange={onChange} required/> <br />
     
     <label htmlFor="phone"><b>phone</b></label>
     <input type="text" placeholder="Enter phone" name="phone" onChange={onChange} required/> <br />

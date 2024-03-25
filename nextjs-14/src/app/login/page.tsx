@@ -21,7 +21,7 @@ export default function Login(){
         setPassword(e.target.value)
     }
     const handleClick = () => {
-        alert("ID = " + username)
+        
         const url = `${SERVER}/api/login`
         const data = {username, password} // {'name':username, 'password':password}의 축약
         const config = {
@@ -33,7 +33,12 @@ export default function Login(){
             }
         }
         axios.post(url,data,config)
-        .then(res=>{alert("리스폰스가 가져온 이름 = " + JSON.stringify(res.data))})
+        // .then(res=>{alert("로그인 결과 = " + JSON.stringify(res.data))}) < 이건 단순이 값을 출력이고 내부를 보고싶으면 아래와같이 변경 (json.stringfy 가 tostring 같은 느낌)
+        .then(res=>{
+            const message = res.data.message
+            alert((message))
+        })
+
     }
     
     return(
