@@ -5,6 +5,7 @@ import { url } from "inspector";
 import Link from "next/link";
 import { config } from "process";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const SERVER = 'http://localhost:8080'
 export default function Login(){
@@ -20,6 +21,9 @@ export default function Login(){
     const hanlePW = (e: any) => {
         setPassword(e.target.value)
     }
+
+    const router = useRouter();
+    
     const handleClick = () => {
         
         const url = `${SERVER}/api/login`
@@ -37,6 +41,15 @@ export default function Login(){
         .then(res=>{
             const message = res.data.message
             alert((message))
+            if (message === 'SUCCESS'){
+                router.push("/articles") // 가고자하는 경로의 상위 경로 폴더 까지 다 박아줘야함
+            } else if (message === 'FAIL') {
+                alert("FAIL");
+            } else if (message === 'WRONG_PASSWORD') {
+                alert("WRONG_PASSWORD");
+            }else{
+                alert("지정되지 않은값");
+            }
         })
 
     }
@@ -49,6 +62,7 @@ export default function Login(){
             <h2>PW</h2>
             <input type="text" onChange={hanlePW}/> <br />
             <button onClick={handleClick}>Login</button> <br />
+            
         </>
     );
 }

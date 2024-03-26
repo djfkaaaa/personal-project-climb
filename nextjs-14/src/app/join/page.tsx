@@ -11,12 +11,12 @@ export default function join(){
         username : "",
         password : "",
         name : "",
-        phone : "",
+        phoneNumber : "",
         job : "",
         height : "",
         weight : ""
     })
-    const {username,password,name,phone,job,height,weight} = inputs;
+    const {username,password,name,phoneNumber,job,height,weight} = inputs;
     const onChange = (e:any) => {
         const {value, name : fieldName } = e.target;
         setInputs(
@@ -29,9 +29,9 @@ export default function join(){
     const router = useRouter();
 
     const onClick = () => {
-        alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phone + ' ' +' ' +job + ' '+height +' ' +weight)
+        alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' ' +' ' +job + ' '+height +' ' +weight)
     const url = `${SERVER}/api/user` 
-    const data = {username,password,name,phone,job,height,weight} // 자바의 requestbody
+    const data = {username,password,name,phoneNumber,job,height,weight} // 자바의 requestbody
     const config = {
       headers:{
         "Cache-Control": "no-cache",
@@ -62,8 +62,8 @@ export default function join(){
     <label htmlFor="name"><b>name</b></label>
     <input type="text" placeholder="Enter name" name="name" onChange={onChange} required/> <br />
     
-    <label htmlFor="phone"><b>phone</b></label>
-    <input type="text" placeholder="Enter phone" name="phone" onChange={onChange} required/> <br />
+    <label htmlFor="phoneNumber"><b>phone</b></label>
+    <input type="text" placeholder="Enter phone" name="phoneNumber" onChange={onChange} required/> <br />
 
     <label htmlFor="job"><b>job</b></label>
     <input type="text" placeholder="Enter job" name="job" onChange={onChange} required/> <br />
