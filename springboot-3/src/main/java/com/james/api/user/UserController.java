@@ -16,7 +16,6 @@ public class UserController {
 
     @PostMapping("/api/login")
     public Map<String,?> login(@RequestBody Map<?,?> paraMap){
-
         Map<String, Messenger> resMap = new HashMap<>();
         String username = (String) paraMap.get("username");
         String pw = (String) paraMap.get("password");
