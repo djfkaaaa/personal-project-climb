@@ -1,53 +1,78 @@
+'use client';
 
-interface IArticles{
-    title : string,
-    content : string,
-    writer : string,
-    registerDate : string,
-    id : number
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { DataGrid } from '@mui/x-data-grid';
+
+
+
+const SERVER = 'http://localhost:8080'
+
+interface IArticles {
+    title: string,
+    content: string,
+    writer: string,
+    registerDate: string,
+    id: number
 }
 
-const Article = (props:IArticles) => {
+export default function articles() {
 
-    return(
-        <tr key={props.id}>
-            {/* ^ td 꺽새는 사용자에게 보여지는 공간, tr 공간은 숨겨지는 공간 */}
-            <td>{props.title}</td>
-            <td>{props.content}</td>
-            <td>{props.writer}</td>
-            <td>{props.registerDate}</td>
-        </tr>
-    );
-};
-// ^ 자바 엔티티에 해당
+    const [contentlists, setContentlists] = useState([])
 
-export default function articles(){
-    // ^ 자바 자료구조에 해당, 순서함수 구조, 판에 해당
+    const url = `${SERVER}/api/articles`
+    const config = {
+        headers: {
+            "Cache-Control": "no-cache",
+            "Content-Type": "application/json",
+            Authorization: `Bearer blah ~`,
+            "Access-Control-Allow-Origin": "*",
+        }
+    }
 
-        
-        
-        const contentlists = [ 
-            // ^ [] < json 타입이며 array라 부르자
-            {id:0, title:"" ,content:"" ,writer:"" ,registerDate:""}
-        ]
-        const articlelists = contentlists.map((v) => 
-        (<Article  {...v}/>))
-        
-        return(
-            <div>
-                <table>
+    useEffect(() => {
+        axios.get(url, config)
+            .then(res => {
+                const message = res.data.message
+                console.log((message))
+                if (message === 'SUCCESS') {
+                    const arr = res.data.result
+                    for (const i of arr) {
+                        console.log(i);
+                    }
+                    setContentlists(res.data.result)
+                } else if (message === 'FAIL') {
+                    console.log("게시글이 없습니다.");
+                } else {
+                    console.log("지정되지 않은값");
+                }
+            })
+    }, [])
+
+    return (
+        <div>
+            <table>
                 <thead>
-                <tr>
-                <th>제목</th>
-                <th>내용</th>
-                <th>작성자</th>
-                <th>등록일</th>
-                </tr>
+                    <tr>
+                        <th>제목</th>
+                        <th>내용</th>
+                        <th>작성자</th>
+                        <th>등록일</th>
+                    </tr>
                 </thead>
-                <tbody>
-                    {articlelists}
+                <tbody >
+                    {contentlists.map((props: IArticles) => (
+                        <tr key={props.id}>
+                            <td>{props.title}</td>
+                            <td>{props.content}</td>
+                            <td>{props.writer}</td>
+                            <td>{props.registerDate}</td>
+                        </tr>
+                    ))}
                 </tbody>
-                </table>
-            </div>
-        );
+            </table>
+        </div>
+        //^ 내부함수 역할
+    );
 }

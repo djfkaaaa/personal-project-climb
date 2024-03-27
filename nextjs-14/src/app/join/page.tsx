@@ -28,7 +28,8 @@ export default function join(){
     }
     const router = useRouter();
 
-    const onClick = () => {
+    const onClick = (e : any) => {
+    e.preventDefault()
         alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' ' +' ' +job + ' '+height +' ' +weight)
     const url = `${SERVER}/api/user` 
     const data = {username,password,name,phoneNumber,job,height,weight} // 자바의 requestbody

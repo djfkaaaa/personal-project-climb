@@ -7,6 +7,8 @@ import { url } from "inspector";
 import { config } from "process";
 import { json } from "stream/consumers";
 import Link from "next/link";
+import './globals.css';
+
 const SERVER = 'http://localhost:8080'
 
 export default function Home() {
@@ -30,13 +32,16 @@ export default function Home() {
     .then(res=>{alert("리스폰스가 가져온 이름 = " + JSON.stringify(res.data))})
   }
   return(
-    <>
+    
+    <div className="flex flex-col items-center">
     <div>안녕</div>
     <h3>이름을 입력해주세요</h3>
     <input type="text" onChange={handleChange} /> <br />
     <button onClick={handleClick}>입력</button> <br />
     <Link href={"/login"}>로그인창</Link> <br />
-    <Link href={"/join"}>회원가입창</Link>
-    </>
+    <Link href={"/join"}>회원가입창</Link> <br />
+    <Link href={"/mui-demo"}>MUI-데모</Link>
+    </div>
+    
   );
 }
