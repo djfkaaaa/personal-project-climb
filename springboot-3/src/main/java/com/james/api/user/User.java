@@ -4,7 +4,7 @@ import com.james.api.account.Account;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "user")
+@Entity(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(exclude = {"id"})

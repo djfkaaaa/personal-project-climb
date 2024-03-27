@@ -4,7 +4,7 @@ import com.james.api.article.Article;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "board")
+@Entity(name = "boards")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(exclude = {"id"})

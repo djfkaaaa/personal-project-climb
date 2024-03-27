@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "account")
+@Entity(name = "accounts")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(exclude = {"id"})
@@ -15,7 +15,7 @@ public class Account {
 
     @Id
     @Column(name = "account_id",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToMany(mappedBy = "account")

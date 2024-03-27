@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class ArticleView {
-    public static void main(Scanner scanner) throws SQLException {
-        while (ArticleRouter.menu(scanner) != 0);
-    }
+//    public static void main(Scanner scanner) throws SQLException {
+//        while (ArticleRouter.menu(scanner) != 0);
+//    }
 
 
 }
