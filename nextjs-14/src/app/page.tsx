@@ -8,8 +8,12 @@ import { config } from "process";
 import { json } from "stream/consumers";
 import Link from "next/link";
 import './globals.css';
+import { Button } from "@mui/material";
+import { API } from "./atoms/enums/API";
+import AxiosConfig from "./organisms/configs/axios-config";
+import { PG } from "./atoms/enums/PG";
 
-const SERVER = 'http://localhost:8080'
+
 
 export default function Home() {
   
@@ -19,28 +23,26 @@ export default function Home() {
   }
   const handleClick = () => {
     alert('리스트가 가져가는 이름 = ' + name)
-    const url = `${SERVER}/name` 
+    const url = `${API.SERVER}/name` 
     const data = {'name': name}
-    const config = {
-      headers:{
-        "Cache-Control": "no-cache",
-        "Content-Type": "application/json",
-         Authorization: `Bearer blah ~` ,
-        "Access-Control-Allow-Origin": "*",
-    }}
+    const config = AxiosConfig()
     axios.post(url,data,config)
     .then(res=>{alert("리스폰스가 가져온 이름 = " + JSON.stringify(res.data))})
   }
   return(
     
-    <div className="flex flex-col items-center">
-    <div>안녕</div>
-    <h3>이름을 입력해주세요</h3>
-    <input type="text" onChange={handleChange} /> <br />
-    <button onClick={handleClick}>입력</button> <br />
-    <Link href={"/login"}>로그인창</Link> <br />
-    <Link href={"/join"}>회원가입창</Link> <br />
-    <Link href={"/mui-demo"}>MUI-데모</Link>
+    <div className="margincenter w-4/5 my-[30px] border-double border-4">
+    <div className="text-3xl font-bold underline text-center">Demo</div>
+    <span className="text-red-500 mr-5">이름입력</span> <br />
+    <input type="text" onChange={handleChange} className="mr-5"/> <br />
+    <Button variant="outlined" onClick={handleClick}>입력</Button> <br />
+    <br />
+    <Link href={`${PG.USER}/login`}>로그인창</Link> <br /> <br />
+    <Link href={`${PG.USER}/join`}>회원가입창</Link> <br /> <br />
+    <Link href={`${PG.DEMO}/mui-demo`}>MUI-데모</Link> <br /> <br />
+    <Link href={`${PG.DEMO}/companies`}>컴퍼니</Link> <br /> <br />
+    <Link href={`${PG.DEMO}/counter`}>카운터 데모</Link> <br /><br />
+    <Link href={`${PG.DEMO}/counter/container`}>리덕스 데모</Link> <br /><br />
     </div>
     
   );

@@ -6,8 +6,11 @@ import Link from "next/link";
 import { config } from "process";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { API } from "@/app/atoms/enums/API";
+import AxiosConfig from "@/app/organisms/configs/axios-config";
+import { PG } from "@/app/atoms/enums/PG";
 
-const SERVER = 'http://localhost:8080'
+
 
 export default function Login() {
 
@@ -27,23 +30,16 @@ export default function Login() {
 
     const handleClick = () => {
 
-        const url = `${SERVER}/api/login`
+        const url = `${API.SERVER}/api/login`
         const data = { username, password } // {'name':username, 'password':password}의 축약
-        const config = {
-            headers: {
-                "Cache-Control": "no-cache",
-                "Content-Type": "application/json",
-                Authorization: `Bearer blah ~`,
-                "Access-Control-Allow-Origin": "*",
-            }
-        }
+        const config = AxiosConfig()
         axios.post(url, data, config)
             // .then(res=>{alert("로그인 결과 = " + JSON.stringify(res.data))}) < 이건 단순이 값을 출력이고 내부를 보고싶으면 아래와같이 변경 (json.stringfy 가 tostring 같은 느낌)
             .then(res => {
                 const message = res.data.message
                 alert((message))
                 if (message === 'SUCCESS') {
-                    router.push("/articles") // 가고자하는 경로의 상위 경로 폴더 까지 다 박아줘야함
+                    router.push(`${PG.BOARD}/articles`) // 가고자하는 경로의 상위 경로 폴더 까지 다 박아줘야함
                 } else if (message === 'FAIL') {
                     alert("FAIL");
                 } else if (message === 'WRONG_PASSWORD') {

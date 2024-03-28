@@ -1,9 +1,12 @@
 'use client';
 
-const SERVER = 'http://localhost:8080'
+
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { API } from "@/app/atoms/enums/API";
+import AxiosConfig from "@/app/organisms/configs/axios-config";
+import { PG } from "@/app/atoms/enums/PG";
  
 export default function join(){
 
@@ -31,19 +34,13 @@ export default function join(){
     const onClick = (e : any) => {
     e.preventDefault()
         alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' ' +' ' +job + ' '+height +' ' +weight)
-    const url = `${SERVER}/api/user` 
+    const url = `${API.SERVER}/api/user` 
     const data = {username,password,name,phoneNumber,job,height,weight} // 자바의 requestbody
-    const config = {
-      headers:{
-        "Cache-Control": "no-cache",
-        "Content-Type": "application/json",
-         Authorization: `Bearer blah ~` ,
-        "Access-Control-Allow-Origin": "*",
-    }}
+    const config = AxiosConfig()
     axios.post(url,data,config)
     .then(res=>
         {alert(JSON.stringify(res.data)) // 자바의 responsebody < return하는 map에 담기는놈
-        router.push("/login")
+        router.push(`${PG.USER}/login`)
         })
     }
 
