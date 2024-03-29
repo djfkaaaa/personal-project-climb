@@ -6,9 +6,9 @@ import Link from "next/link";
 import { config } from "process";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { API } from "@/app/atoms/enums/API";
-import AxiosConfig from "@/app/organisms/configs/axios-config";
-import { PG } from "@/app/atoms/enums/PG";
+import { API } from "@/redux/common/enums/API";
+import AxiosConfig from "@/redux/common/configs/axios-config";
+import { PG } from "@/redux/common/enums/PG";
 
 
 

@@ -9,9 +9,9 @@ import { json } from "stream/consumers";
 import Link from "next/link";
 import './globals.css';
 import { Button } from "@mui/material";
-import { API } from "./atoms/enums/API";
-import AxiosConfig from "./organisms/configs/axios-config";
-import { PG } from "./atoms/enums/PG";
+import { API } from "../redux/common/enums/API";
+import AxiosConfig from "../redux/common/configs/axios-config";
+import { PG } from "../redux/common/enums/PG";
 
 
 
@@ -42,7 +42,9 @@ export default function Home() {
     <Link href={`${PG.DEMO}/mui-demo`}>MUI-데모</Link> <br /> <br />
     <Link href={`${PG.DEMO}/companies`}>컴퍼니</Link> <br /> <br />
     <Link href={`${PG.DEMO}/counter`}>카운터 데모</Link> <br /><br />
+    <Link href={`${PG.DEMO}/redux-counter`}>리덕스 카운터 데모</Link> <br /><br />
     <Link href={`${PG.DEMO}/counter/container`}>리덕스 데모</Link> <br /><br />
+    <Link href={`/pages/boards/articles`}>아티클</Link> <br /><br />
     </div>
     
   );

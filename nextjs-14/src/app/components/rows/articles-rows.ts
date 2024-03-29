@@ -1,6 +1,6 @@
-import { API } from "@/app/atoms/enums/API"
+import { API } from "@/redux/common/enums/API"
 import { useEffect, useState } from "react"
-import AxiosConfig from "../configs/axios-config"
+import AxiosConfig from "../../../redux/common/configs/axios-config"
 import axios from "axios";
 
  export default function ArticleRow () {

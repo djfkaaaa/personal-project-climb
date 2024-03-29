@@ -1,4 +1,4 @@
-interface IArticles {
+export interface IArticles {
     title: string,
     content: string,
     writer: string,

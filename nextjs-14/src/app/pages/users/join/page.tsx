@@ -4,9 +4,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { API } from "@/app/atoms/enums/API";
-import AxiosConfig from "@/app/organisms/configs/axios-config";
-import { PG } from "@/app/atoms/enums/PG";
+import { API } from "@/redux/common/enums/API";
+import AxiosConfig from "@/redux/common/configs/axios-config";
+import { PG } from "@/redux/common/enums/PG";
  
 export default function join(){
 
@@ -20,12 +20,12 @@ export default function join(){
         weight : ""
     })
     const {username,password,name,phoneNumber,job,height,weight} = inputs;
-    const onChange = (e:any) => {
-        const {value, name : fieldName } = e.target;
+    const handleChange = (e:any) => {
+        const {value, name} = e.target;
         setInputs(
              ({
                 ...inputs,
-                [fieldName]: value
+                [name]: value
             })
         );
     }
@@ -52,25 +52,25 @@ export default function join(){
     <hr/>
 
     <label htmlFor="username"><b>username</b></label>
-    <input type="text" placeholder="Enter username" name="username" onChange={onChange} required/> <br />
+    <input type="text" placeholder="Enter username" name="username" onChange={handleChange} required/> <br />
 
     <label htmlFor="password"><b>password</b></label>
-    <input type="text" placeholder="Enter password" name="password" onChange={onChange} required/> <br />
+    <input type="text" placeholder="Enter password" name="password" onChange={handleChange} required/> <br />
 
     <label htmlFor="name"><b>name</b></label>
-    <input type="text" placeholder="Enter name" name="name" onChange={onChange} required/> <br />
+    <input type="text" placeholder="Enter name" name="name" onChange={handleChange} required/> <br />
     
     <label htmlFor="phoneNumber"><b>phone</b></label>
-    <input type="text" placeholder="Enter phone" name="phoneNumber" onChange={onChange} required/> <br />
+    <input type="text" placeholder="Enter phone" name="phoneNumber" onChange={handleChange} required/> <br />
 
     <label htmlFor="job"><b>job</b></label>
-    <input type="text" placeholder="Enter job" name="job" onChange={onChange} required/> <br />
+    <input type="text" placeholder="Enter job" name="job" onChange={handleChange} required/> <br />
 
     <label htmlFor="height"><b>height</b></label>
-    <input type="text" placeholder="Enter height" name="height" onChange={onChange} required/> <br />  
+    <input type="text" placeholder="Enter height" name="height" onChange={handleChange} required/> <br />  
 
     <label htmlFor="weight"><b>weight</b></label>
-    <input type="text" placeholder="Enter weight" name="weight" onChange={onChange} required/>     
+    <input type="text" placeholder="Enter weight" name="weight" onChange={handleChange} required/>     
 
     <label>
       <input type="checkbox" checked={true} name="remember" style={{marginBottom:"15px"}}/> 
