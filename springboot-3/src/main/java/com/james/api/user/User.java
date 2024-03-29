@@ -1,8 +1,11 @@
 package com.james.api.user;
 
 import com.james.api.account.Account;
+import com.james.api.article.Article;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -16,13 +19,18 @@ public class User {
     private Long id;
 
 
+    @OneToMany(mappedBy = "user")
+    private List<Article> article;
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
+
     private String username;
     private String password;
     private String name;
+    @Column(name = "phone_number")
     private String phoneNumber;
     private Long addressId;
     private String job;
