@@ -17,13 +17,18 @@ const status = {
 const handlePending = (state:any) => {
     
 }
-const handleFulfilled = (state:any,{payload}:any) => {
-    console.log('--------conclusion--------')
-    console.log(JSON.stringify(payload))
-}
+
+
 const handleRejected = (state:any) => {
     
 }
+
+const handleFulfilled = (state:any,{payload}:any) => {
+    console.log('--------conclusion--------')
+    state.array = payload
+    console.log(state.array)
+}
+
 
 
 export const articleSlice = createSlice({
@@ -37,6 +42,12 @@ export const articleSlice = createSlice({
         .addCase(getArticles.fulfilled, handleFulfilled)
     }
 })
+
+export const getAllArticles = (state : any) => {
+    console.log('------------Before useSelector--------------')
+    console.log(JSON.stringify(state.article.array.result))
+    return state.article.array.result;
+}
 
 export const {} = articleSlice.actions
 

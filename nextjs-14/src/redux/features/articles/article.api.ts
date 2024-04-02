@@ -8,5 +8,6 @@ export const getAllArticlesAPI = async (page : number) => {
         return response.data
     }catch(error){
         console.log(error)
+        return error
     }
 }

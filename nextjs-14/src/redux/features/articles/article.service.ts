@@ -9,10 +9,9 @@ export const getArticles : any = createAsyncThunk(
     'articles/getAllArticles',
     async(page : number) => {
         console.log('getArticles page : ' + page)
-        const {message,result}:any = await getAllArticlesAPI(0);
-        console.log('------api 사용한 경우---------')
-        console.log('message')
-        console.log(JSON.stringify(result))
+        const data:any = await getAllArticlesAPI(1);
+        const {message,result} : any = data
+        return data
     }
 )
 

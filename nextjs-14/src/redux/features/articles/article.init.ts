@@ -5,5 +5,5 @@ export const initialState : IArticles = {
     content: "",
     writer: "",
     registerDate: "",
-    id: 0
+    array : []
 }

@@ -1,36 +1,50 @@
-import { createSlice } from "@reduxjs/toolkit"; 
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { initialState } from "./user.init";
+import { fetchAllUsers } from "./user.service";
 
-interface Iuser{
-    id : number,
-    username : string,
-    password : string,
-    name : string,
-    phoneNumber : string,
-    addressId : number,
-    job : string,
-    height : number,
-    weight : number
+const userThunks = [fetchAllUsers]
+
+const status = {
+    pending: 'pending',
+    fulfilled: 'fulfilled',
+    rejected: 'rejected'
 }
 
-const initialState:Iuser = {
-    id : 0,
-    username : "",
-    password : "",
-    name : "",
-    phoneNumber : "",
-    addressId : 0,
-    job : "",
-    height : 0,
-    weight : 0
+const handleFulfilled =  (state: any, {payload}: any) => { 
+    console.log('------------------ conclusion ---------------')
+    state.array = payload 
+    console.log(state.array)
+
 }
+
+const handlePending = (state: any) => {
+    
+}
+  
+  const handleRejected = (state: any) => {
+   
+}
+
 
 export const userSlice = createSlice({
-    name : "user",
+    name: "users",
     initialState,
-    reducers:{}
-});
+    reducers: {},
+    extraReducers: builder => {
+        const {pending, rejected} = status;
+        builder 
 
-export const {} = userSlice.actions
+        .addCase(fetchAllUsers.fulfilled, handleFulfilled) 
+    }
+})
+export const getAllUsers = (state: any) => {
+    console.log('------------------ Before useSelector ---------------')
+    console.log(JSON.stringify(state.user.array.result))
+    return state.user.array.result; 
+
+}
+
+export const { } = userSlice.actions
 
 export default userSlice.reducer;
-

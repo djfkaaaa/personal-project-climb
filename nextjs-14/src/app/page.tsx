@@ -45,6 +45,7 @@ export default function Home() {
     <Link href={`${PG.DEMO}/redux-counter`}>리덕스 카운터 데모</Link> <br /><br />
     <Link href={`${PG.DEMO}/counter/container`}>리덕스 데모</Link> <br /><br />
     <Link href={`/pages/boards/articles`}>아티클</Link> <br /><br />
+    <Link href={`/pages/users/findUsers`}>유저</Link> <br /><br />
     </div>
     
   );
