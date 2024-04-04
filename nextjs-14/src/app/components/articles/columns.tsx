@@ -6,7 +6,7 @@ export default function Columns() : GridColDef[]{
             flex: 0.04,
             minWidth: 0,
             sortable: false,
-            field: 'id',
+            field: 'id', // field값은 자바에서 넘어온 속성값이여야함
             headerName: 'ID',
             renderCell: () =>{
                 return<></>

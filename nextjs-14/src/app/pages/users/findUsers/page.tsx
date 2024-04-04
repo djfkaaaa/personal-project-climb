@@ -1,14 +1,20 @@
 'use client'
+
+import UserColumns from "@/app/components/users/column"
 import { IUser } from "@/redux/features/users/user.model"
 import { fetchAllUsers } from "@/redux/features/users/user.service"
 import { getAllUsers } from "@/redux/features/users/user.slice"
+import { DataGrid } from "@mui/x-data-grid"
 import { NextPage } from "next"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 
 const UsersPage: NextPage = () => {
+
+    const [pageSize, setPageSize] = useState(5);
     const dispatch = useDispatch()
+    
     const allUsers: [] = useSelector(getAllUsers)
 
     if(allUsers !== undefined){
@@ -26,33 +32,31 @@ const UsersPage: NextPage = () => {
         dispatch(fetchAllUsers(1))
     },[])
 
-    return(<>
-    <table border={1}>
-        <thead>
-            <tr>
-                <th>아이디</th>
-                <th>이름</th>
-                <th>전화번호</th>
-                <th>직업</th>
-                <th>키</th>
-                <th>체중</th>
-            </tr>
-        </thead>
-        <tbody>
-            {allUsers?.map((props:IUser)=>(
-                <tr key={props.id}>
-                    <td>{props.username}</td>
-                    <td>{props.name}</td>
-                    <td>{props.phone}</td>
-                    <td>{props.job}</td>
-                    <td>{props.height}</td>
-                    <td>{props.weight}</td>
-                </tr>
-            ))}
-        </tbody>
-        </table>  
+    //   const rows = [ 
+    //     { id: 1, username: "Snow", name: "Jon", phoneNumber: 35 },
+    //     { id: 2, username: "Lannister", name: "Cersei", phoneNumber: 42 },
+    //     { id: 3, username: "Lannister", name: "Jaime", phoneNumber: 45 },
+    //     { id: 4, username: "Stark", name: "Arya", phoneNumber: 16 },
+    //     { id: 5, username: "Targaryen", name: "Daenerys", phoneNumber: null },
+    //     { id: 6, username: "Melisandre", name: null, phoneNumber: 150 },
+    //     { id: 7, username: "Clifford", name: "Ferrara", phoneNumber: 44 },
+    //     { id: 8, username: "Frances", name: "Rossini", phoneNumber: 36 },
+    //     { id: 9, username: "Roxie", name: "Harvey", phoneNumber: 65 },
+    //   ];
     
-    </>)
+
+    return(<>
+    <h2>사용자 목록</h2>
+
+      <DataGrid 
+        rows={allUsers}
+        columns={UserColumns()}
+        pageSizeOptions={[5,10,20]} 
+        checkboxSelection
+      />
+      </>
+    
+    )
 }
 
 export default UsersPage;

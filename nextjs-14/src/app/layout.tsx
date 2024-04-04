@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Margarine } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
+import ResponsiveAppBar from "./components/common/header";
 
 
 const ReduxProvider = dynamic(()=> import("@/redux/redux-provider"),{
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ResponsiveAppBar/>
         <ReduxProvider>{children}</ReduxProvider>
         </body>
     </html>

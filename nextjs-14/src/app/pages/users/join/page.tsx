@@ -15,11 +15,9 @@ export default function join(){
         password : "",
         name : "",
         phoneNumber : "",
-        job : "",
-        height : "",
-        weight : ""
+        job : ""
     })
-    const {username,password,name,phoneNumber,job,height,weight} = inputs;
+    const {username,password,name,phoneNumber,job} = inputs;
     const handleChange = (e:any) => {
         const {value, name} = e.target;
         setInputs(
@@ -33,9 +31,9 @@ export default function join(){
 
     const onClick = (e : any) => {
     e.preventDefault()
-        alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' ' +' ' +job + ' '+height +' ' +weight)
+        alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' ' +' ' +job )
     const url = `${API.SERVER}/api/user` 
-    const data = {username,password,name,phoneNumber,job,height,weight} // 자바의 requestbody
+    const data = {username,password,name,phoneNumber,job} // 자바의 requestbody
     const config = AxiosConfig()
     axios.post(url,data,config)
     .then(res=>
@@ -66,11 +64,6 @@ export default function join(){
     <label htmlFor="job"><b>job</b></label>
     <input type="text" placeholder="Enter job" name="job" onChange={handleChange} required/> <br />
 
-    <label htmlFor="height"><b>height</b></label>
-    <input type="text" placeholder="Enter height" name="height" onChange={handleChange} required/> <br />  
-
-    <label htmlFor="weight"><b>weight</b></label>
-    <input type="text" placeholder="Enter weight" name="weight" onChange={handleChange} required/>     
 
     <label>
       <input type="checkbox" checked={true} name="remember" style={{marginBottom:"15px"}}/> 

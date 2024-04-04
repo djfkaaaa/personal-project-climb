@@ -4,11 +4,9 @@ export const initialState: IUser = {
     id: 0,
     username: "",
     password: "",
-    checkPassword: "",
     name: "",
     phone: "",
     job: "",
-    height: 0,
-    weight: 0,
     array: []
 }
+// 데이터 컬럼값 초기화부

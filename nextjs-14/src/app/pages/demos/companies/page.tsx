@@ -1,7 +1,7 @@
 // 샘플 코드 
 
-import CompaniesColumns from "@/app/components/columns/companies-columns";
-import CompaniesRow from "@/app/components/rows/companies-rows";
+import CompaniesColumns from "@/app/components/demos/companies-columns";
+import CompaniesRow from "@/app/components/boards/companies-rows";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { NextPage } from "next";
