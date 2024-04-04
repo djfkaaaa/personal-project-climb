@@ -48,14 +48,15 @@ const UsersPage: NextPage = () => {
     return(<>
     <h2>사용자 목록</h2>
 
-      <DataGrid 
-        rows={allUsers}
+    <div style={{ height: 400, width: "100%" }}>
+    <DataGrid
+        rows={allUsers || []}
         columns={UserColumns()}
-        pageSizeOptions={[5,10,20]} 
+        pageSizeOptions={[5, 10, 20]}
         checkboxSelection
-      />
-      </>
-    
+    />
+   </div>
+   </>
     )
 }
 
