@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { initialState } from "./user.init";
-import { fetchAllUsers } from "./user.service";
+import { initialState } from "./user-init";
+import { fetchAllUsers } from "./user-service";
 
 const userThunks = [fetchAllUsers]
 
@@ -42,7 +42,7 @@ export const getAllUsers = (state: any) => {
     console.log('------------------ Before useSelector ---------------')
     console.log(JSON.stringify(state.user.array.result))
     return state.user.array.result; 
-
+// array.result였는데 일단 result 빼둠
 }
 
 export const { } = userSlice.actions

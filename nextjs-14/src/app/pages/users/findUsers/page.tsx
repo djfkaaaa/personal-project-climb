@@ -1,9 +1,9 @@
 'use client'
 
-import UserColumns from "@/app/components/users/column"
-import { IUser } from "@/redux/features/users/user.model"
-import { fetchAllUsers } from "@/redux/features/users/user.service"
-import { getAllUsers } from "@/redux/features/users/user.slice"
+import UserColumns from "@/app/components/users/module/user-column"
+import { IUser } from "@/app/components/users/model/user-model"
+import { fetchAllUsers } from "@/app/components/users/service/user-service"
+import { getAllUsers } from "@/app/components/users/service/user-slice"
 import { DataGrid } from "@mui/x-data-grid"
 import { NextPage } from "next"
 import { useEffect, useState } from "react"
@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux"
 const UsersPage: NextPage = () => {
 
     const [pageSize, setPageSize] = useState(5);
+    
     const dispatch = useDispatch()
     
     const allUsers: [] = useSelector(getAllUsers)
@@ -32,19 +33,7 @@ const UsersPage: NextPage = () => {
         dispatch(fetchAllUsers(1))
     },[])
 
-    //   const rows = [ 
-    //     { id: 1, username: "Snow", name: "Jon", phoneNumber: 35 },
-    //     { id: 2, username: "Lannister", name: "Cersei", phoneNumber: 42 },
-    //     { id: 3, username: "Lannister", name: "Jaime", phoneNumber: 45 },
-    //     { id: 4, username: "Stark", name: "Arya", phoneNumber: 16 },
-    //     { id: 5, username: "Targaryen", name: "Daenerys", phoneNumber: null },
-    //     { id: 6, username: "Melisandre", name: null, phoneNumber: 150 },
-    //     { id: 7, username: "Clifford", name: "Ferrara", phoneNumber: 44 },
-    //     { id: 8, username: "Frances", name: "Rossini", phoneNumber: 36 },
-    //     { id: 9, username: "Roxie", name: "Harvey", phoneNumber: 65 },
-    //   ];
     
-
     return(<>
     <h2>사용자 목록</h2>
 

@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
-import { UserColumn } from "./model/UserColumn";
+import { UserColumn } from "../model/user-column";
 
 interface CellType{
     row : UserColumn

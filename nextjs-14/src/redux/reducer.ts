@@ -3,7 +3,7 @@ import { persistReducer } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import countReducer from "@/redux/features/counter/counter.slice";
 import articleReducer from "@/redux/features/articles/article.slice";
-import userReducer from "@/redux/features/users/user.slice";
+import userReducer from "@/app/components/users/service/user-slice";
 
 const createNoopStorage = () => {
   return {
