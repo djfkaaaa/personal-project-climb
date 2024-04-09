@@ -7,6 +7,9 @@ export const initialState: IUser = {
     name: "",
     phone: "",
     job: "",
+    articles: "",
+    regDate: "",
+    modDate: "",
     array: []
 }
 // 데이터 컬럼값 초기화부

@@ -2,11 +2,14 @@
 
 export interface UserColumn{
 
-    id?: string;
+    id?: number;
     username?: string;
     password?: string;
     name?: string;
     phoneNumber?: string;
     job?: string;
+    articles?: string;
+    regDate?: string;
+    modDate?: string;
     // ^ ? 붙이면 자바의 optional <  값이 없어도된다.
 }

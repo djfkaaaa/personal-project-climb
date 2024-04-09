@@ -5,6 +5,9 @@ export interface IUser {
     name: string,
     phone: string,
     job: string,
+    articles: string,
+    regDate: string,
+    modDate: string,
     array: []
 }
 

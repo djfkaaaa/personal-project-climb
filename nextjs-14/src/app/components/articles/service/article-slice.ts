@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./article.init";
-import { getArticles } from "./article.service";
+import { initialState } from "./article-init";
+import { getArticles } from "./article-service";
 import { Pending } from "@mui/icons-material";
-import { getAllArticlesAPI } from "./article.api";
+import { findAllArticlesAPI} from "./article-api";
 
 const articleThunks = [getArticles]
 
@@ -45,8 +45,8 @@ export const articleSlice = createSlice({
 
 export const getAllArticles = (state : any) => {
     console.log('------------Before useSelector--------------')
-    console.log(JSON.stringify(state.article.array.result))
-    return state.article.array.result;
+    console.log(JSON.stringify(state.article.array))
+    return state.article.array;
 }
 
 export const {} = articleSlice.actions

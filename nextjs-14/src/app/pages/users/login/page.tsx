@@ -3,7 +3,7 @@
 import axios from "axios";
 import { url } from "inspector";
 import Link from "next/link";
-import { config } from "process";
+import { config, env } from "process";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { API } from "@/redux/common/enums/API";
@@ -30,7 +30,7 @@ export default function Login() {
 
     const handleClick = () => {
 
-        const url = `${API.SERVER}/api/login`
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/users/login`
         const data = { username, password } // {'name':username, 'password':password}의 축약
         const config = AxiosConfig()
         axios.post(url, data, config)
@@ -39,7 +39,7 @@ export default function Login() {
                 const message = res.data.message
                 alert((message))
                 if (message === 'SUCCESS') {
-                    router.push(`${PG.BOARD}/articles`) // 가고자하는 경로의 상위 경로 폴더 까지 다 박아줘야함
+                    router.push(`/pages/users/findUsers`) // 가고자하는 경로의 상위 경로 폴더 까지 다 박아줘야함
                 } else if (message === 'FAIL') {
                     alert("FAIL");
                 } else if (message === 'WRONG_PASSWORD') {

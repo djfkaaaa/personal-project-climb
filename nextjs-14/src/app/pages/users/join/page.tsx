@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { API } from "@/redux/common/enums/API";
 import AxiosConfig from "@/redux/common/configs/axios-config";
 import { PG } from "@/redux/common/enums/PG";
+
  
 export default function join(){
 
@@ -31,8 +32,8 @@ export default function join(){
 
     const onClick = (e : any) => {
     e.preventDefault()
-        alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' ' +' ' +job )
-    const url = `${API.SERVER}/api/user` 
+        alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' '+job )
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/users/save` 
     const data = {username,password,name,phoneNumber,job} // 자바의 requestbody
     const config = AxiosConfig()
     axios.post(url,data,config)

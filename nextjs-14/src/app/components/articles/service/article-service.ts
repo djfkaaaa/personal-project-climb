@@ -1,15 +1,15 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import { IArticles } from './article.model';
-import { getAllArticlesAPI } from './article.api';
+import { IArticles } from '../model/article-model';
+import { findAllArticlesAPI } from './article-api';
 import axios from 'axios';
 import { API } from '@/redux/common/enums/API';
 import AxiosConfig, { instance } from '@/redux/common/configs/axios-config';
 
 export const getArticles : any = createAsyncThunk(
-    'articles/getAllArticles',
+    'articles/findAllArticles',
     async(page : number) => {
-        console.log('getArticles page : ' + page)
-        const data:any = await getAllArticlesAPI(1);
+        console.log('findArticles page : ' + page)
+        const data:any = await findAllArticlesAPI(1);
         const {message,result} : any = data
         return data
     }

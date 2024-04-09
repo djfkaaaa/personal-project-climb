@@ -38,15 +38,19 @@ const UsersPage: NextPage = () => {
     <h2>사용자 목록</h2>
 
     <div style={{ height: 400, width: "100%" }}>
-    <DataGrid
-        rows={allUsers || []}
+    {allUsers && <DataGrid
+        rows={allUsers}
         columns={UserColumns()}
         pageSizeOptions={[5, 10, 20]}
         checkboxSelection
-    />
+    />}
    </div>
    </>
     )
+    // 이 코드 상에서 무상태의 개념을 적용시키면, 값이 바뀔때 컴포넌트 함수가 새로 실행되며 
+    // 새로운 리턴 값이 만들어진다한다, 이 말은 기존의 리턴값이 있다는 것이고 이 코드상 return은 기존에 있던
+    // 리턴값, useEffect가 실행되어 값이 바뀌면? 새로운 return 값이 생김?
+    // return 안에 있는 usercolumns 함수가 먼저 실행
 }
 
 export default UsersPage;

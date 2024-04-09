@@ -3,8 +3,9 @@ import { use } from 'react'
 
 export const fetchAllUsersAPI = async (page: number) =>{
     try{
-        const response = await instance.get('/all-users',{ 
-            params: {page, limit: 10}
+        const response = await instance.get('/users/list',{ 
+
+            params: {page, limit: 20}
         })
         console.log("-----")
         return response.data

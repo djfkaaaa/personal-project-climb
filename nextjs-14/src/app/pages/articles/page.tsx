@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useSelector, useDispatch } from 'react-redux'
-import { IArticles } from "@/redux/features/articles/article.model";
-import { getArticles } from "@/redux/features/articles/article.service";
-import { getAllArticles } from "@/redux/features/articles/article.slice";
-import Columns from "@/app/components/articles/columns";
+
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import { getAllArticles } from "@/app/components/articles/service/article-slice";
+import { getArticles } from "@/app/components/articles/service/article-service";
+import Columns from "@/app/components/articles/module/article-columns";
 
 const articlesPage:NextPage = ({data}:any) => {
 
@@ -34,7 +34,7 @@ const articlesPage:NextPage = ({data}:any) => {
         <h2>개인페이지 Article</h2>
         <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={data}
+        rows={allArticles}
         columns={Columns()}
         initialState={{
           pagination: {

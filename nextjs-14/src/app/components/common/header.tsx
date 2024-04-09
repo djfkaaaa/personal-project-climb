@@ -38,7 +38,8 @@ function ResponsiveAppBar() {
       case "회원가입": router.push("/pages/users/join"); break;
       case "로그인": router.push("/pages/users/login"); break;
       case "카운터": router.push("/pages/demos/counter"); break;
-      case "게시글목록": router.push("/pages/boards/articles"); break;
+      case "게시판목록": router.push("/pages/boards"); break;
+      case "게시글목록": router.push("/pages/articles"); break;
       case "사용자목록": router.push("/pages/users/findUsers"); break;
     }
   };
@@ -168,11 +169,21 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button
                 key={'게시글 목록'}
-                href={`${PG.BOARD}/articles`}
+                href={`${PG.PAGE}/articles`}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}  
               >
                 {'게시글 목록'}
+              </Button>
+          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              <Button
+                key={'게시판 목록'}
+                href={`${PG.PAGE}/boards`}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}  
+              >
+                {'게시판 목록'}
               </Button>
           </Box>
 

@@ -1,6 +1,7 @@
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
 import { UserColumn } from "../model/user-column";
+import { PG } from "@/redux/common/enums/PG";
 
 interface CellType{
     row : UserColumn
@@ -24,7 +25,9 @@ export default function UserColumns() : GridColDef[]{
             sortable: false,
             field: 'username',
             headerName: 'ID',
-            renderCell: ({row}:CellType) => <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.username}</Typography>
+            renderCell: ({row}:CellType) => <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>
+                <Link href={`${PG.USER}/detail/${row.id}`} className="underline">{row.username}</Link>
+                </Typography>
             }
         ,
         {
@@ -62,5 +65,33 @@ export default function UserColumns() : GridColDef[]{
             headerName: '직업',
             renderCell: ({row}:CellType) => <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.job}</Typography>
             }
+        ,
+        {
+            flex: 0.04,
+            minWidth: 30,
+            sortable: false,
+            field: 'articles',
+            headerName: '기사',
+            renderCell: ({row}:CellType) => <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.articles}</Typography>
+            }
+        ,
+        {
+            flex: 0.04,
+            minWidth: 30,
+            sortable: false,
+            field: 'regDate',
+            headerName: '생성일',
+            renderCell: ({row}:CellType) => <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.regDate}</Typography>
+            }
+         ,
+         {
+            flex: 0.04,
+            minWidth: 30,
+            sortable: false,
+            field: 'modDate',
+            headerName: '수정일',
+            renderCell: ({row}:CellType) => <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.modDate}</Typography>
+            }        
+
     ]
 }
