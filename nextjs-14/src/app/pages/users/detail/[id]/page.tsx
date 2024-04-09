@@ -15,10 +15,12 @@ export default function UsersPage(props:any) {
 
     return(
         <div>
-            <h1>게시판 출력</h1>
+            <h1>상세 유저 출력</h1>
            <h1>parameter = {props.params.id}</h1> 
         </div>
     )
+    //user-column.tsx 파일에서 내가 id 파라미터 효과주고싶은곳
+    //이번의 경우 username에 link 참조
 }
 
 
