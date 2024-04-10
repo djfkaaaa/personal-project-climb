@@ -1,6 +1,7 @@
 // 엔티티 느낌의 파일, ts는 타입스크립트이므로 컴포넌트가 아니다
 
 export interface UserColumn{
+    props: any;
 
     id?: number;
     username?: string;

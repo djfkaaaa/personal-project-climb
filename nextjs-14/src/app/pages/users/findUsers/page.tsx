@@ -9,14 +9,17 @@ import { NextPage } from "next"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
+import { StripedDataGrid } from "@/app/components/common/style/board-style"
 
 const UsersPage: NextPage = () => {
 
-    const [pageSize, setPageSize] = useState(5);
+    // const [pageSize, setPageSize] = useState(5);
     
     const dispatch = useDispatch()
+    // useDispatch hook을 통해 액션을 발생시키고 값 변경 < useDispatch는 보통 dispatch라는 변수명에 담김
     
     const allUsers: [] = useSelector(getAllUsers)
+    // useSelector hook을 통해 초기 값 지정
 
     if(allUsers !== undefined){
         console.log('allUsers is not undefined')
@@ -37,7 +40,7 @@ const UsersPage: NextPage = () => {
     return(<>
     <h2>사용자 목록</h2>
 
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: "100%", width: "100%" }}>
     {allUsers && <DataGrid
         rows={allUsers}
         columns={UserColumns()}

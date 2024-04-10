@@ -1,6 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
 import { BoardColumn } from "../model/board-column";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
+import { PG } from "@/redux/common/enums/PG";
 
 interface CellType{
     row : BoardColumn
@@ -25,7 +26,9 @@ export default function Columns() : GridColDef[]{
             field: 'boardName',
             headerName: '게시판 이름',
             renderCell: ({row}:CellType) =>
-            <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.boardName}</Typography>
+            <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>
+                 <Link href={`${PG.BOARD}/detail/${row.id}`} className="underline">{row.boardName}</Link>
+                </Typography>
         },
         {
             flex: 0.04,

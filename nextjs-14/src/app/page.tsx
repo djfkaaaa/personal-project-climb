@@ -32,8 +32,8 @@ export default function Home() {
   return(
     
     <div className="margincenter w-4/5 my-[30px] border-double border-4">
-    <div className="text-3xl font-bold underline text-center">Demo</div>
-    <span className="text-red-500 mr-5">이름입력</span> <br />
+    <div className="text-3xl font-bold underline text-center">TEST HOME</div>
+    {/* <span className="text-red-500 mr-5">이름입력</span> <br /> */}
     {/* <input type="text" onChange={handleChange} className="mr-5"/> <br />
     <Button variant="outlined" onClick={handleClick}>입력</Button> <br /> */}
     <br />

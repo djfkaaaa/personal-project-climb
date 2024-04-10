@@ -1,6 +1,7 @@
 import { GridColDef } from "@mui/x-data-grid";
 import { ArticleColumn } from "../model/article-column";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
+import { PG } from "@/redux/common/enums/PG";
 
 interface CellType{
     row : ArticleColumn
@@ -25,7 +26,9 @@ export default function Columns() : GridColDef[]{
             field: 'title',
             headerName: 'Title',
             renderCell: ({row}:CellType) =>
-            <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.title}</Typography>
+            <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>
+                 <Link href={`${PG.ARTICLE}/detail/${row.id}`} className="underline">{row.title}</Link>
+                </Typography>
         },
         {
             flex: 0.04,

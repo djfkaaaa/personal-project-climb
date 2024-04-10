@@ -2,6 +2,7 @@ import { Link, Typography } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
 import { UserColumn } from "../model/user-column";
 import { PG } from "@/redux/common/enums/PG";
+import { MyTypography }  from "../../common/style/cell";
 
 interface CellType{
     row : UserColumn
@@ -15,7 +16,7 @@ export default function UserColumns() : GridColDef[]{
             sortable: false,
             field: 'id', // field값은 자바에서 넘어온 속성값이여야함
             headerName: 'No',
-            renderCell: ({row}:CellType) => <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.id}</Typography>
+            renderCell: ({row}:CellType) => MyTypography(row.id,"1.2rem")
             }
             // {return} 은 생략이 가능 생략하면 위와같이댐
         ,

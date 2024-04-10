@@ -6,6 +6,7 @@ import userReducer from "@/app/components/users/service/user-slice";
 import articleReducer from "@/app/components/articles/service/article-slice";
 import boardReducer from "@/app/components/boards/service/board-slice";
 
+
 const createNoopStorage = () => {
   return {
     getItem() {
@@ -52,11 +53,13 @@ const persistedArticleReducer = persistReducer(articlePersistConfig, articleRedu
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
 const persistedBoardReducer = persistReducer(boardPersistConfig, boardReducer);
 
+
 export const rootReducer = combineReducers({
   count: persistedCountReducer,
   article : persistedArticleReducer,
   user : persistedUserReducer,
-  board : persistedBoardReducer
+  board : persistedBoardReducer,
+  
 });
 
 

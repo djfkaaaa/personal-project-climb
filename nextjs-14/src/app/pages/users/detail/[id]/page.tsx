@@ -1,27 +1,51 @@
 'use client'
 
-import UserColumns from "@/app/components/users/module/user-column"
-import { IUser } from "@/app/components/users/model/user-model"
-import { fetchAllUsers } from "@/app/components/users/service/user-service"
-import { getAllUsers } from "@/app/components/users/service/user-slice"
-import { DataGrid } from "@mui/x-data-grid"
-import { NextPage } from "next"
-import { JSX, useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { useRouter } from "next/router"
+import { fetchOneUser } from "@/app/components/users/service/user-service"
+import { getUserById } from "@/app/components/users/service/user-slice"
+import { Typography } from "@mui/material"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
-export default function UsersPage(props:any) {
+
+export default function UsersPage(props:any){
+
+    const dispatch = useDispatch()
+    const getUsers = useSelector(getUserById)
+    
+
+    useEffect(()=>{
+        dispatch(fetchOneUser(props.params.id))
+    },[])
+
+    
 
     return(
-        <div>
-            <h1>상세 유저 출력</h1>
-           <h1>parameter = {props.params.id}</h1> 
-        </div>
+        <>
+          <h2>사용자 목록</h2>
+          <span>Num : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getUsers.id}</Typography>
+          <span>ID : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getUsers.username}</Typography>
+          <span>PW : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getUsers.password}</Typography>
+          <span>NAME : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getUsers.name}</Typography>
+          <span>PHONE NUMBER : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getUsers.phoneNumber}</Typography>
+          <span>JOB : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getUsers.job}</Typography>
+        </>
+       
+        
+       
     )
     //user-column.tsx 파일에서 내가 id 파라미터 효과주고싶은곳
     //이번의 경우 username에 link 참조
 }
+
+
+
+
+// export const findUserById:any = createAsyncThunk(
+//     'users/findUserById',
+//     async(id: number) =>{
+//         return id
+//     }
+// )
 
 
 

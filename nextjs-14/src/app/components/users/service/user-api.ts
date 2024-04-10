@@ -5,7 +5,7 @@ export const fetchAllUsersAPI = async (page: number) =>{
     try{
         const response = await instance.get('/users/list',{ 
 
-            params: {page, limit: 20}
+            params: {page, limit: 10}
         })
         console.log("-----")
         return response.data
@@ -13,5 +13,15 @@ export const fetchAllUsersAPI = async (page: number) =>{
         console.log(error)
         return error
     }
-    
+}
+
+export const fetchOneUserAPI = async (id: number) => {
+    try{
+        const response = await instance.get('/users/detail',{
+            params: {id}
+        })
+        return response.data
+    }catch(error){
+        return error
+    }
 }
