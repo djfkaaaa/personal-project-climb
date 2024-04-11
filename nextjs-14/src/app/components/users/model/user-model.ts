@@ -3,12 +3,13 @@ export interface IUser {
     username: string,
     password: string,
     name: string,
-    phone: string,
+    phoneNumber: string,
     job: string,
     articles: string,
     regDate: string,
     modDate: string,
-    array: []
+    array: [],
+    json: {}
 }
 
 // 컬럼 선언부

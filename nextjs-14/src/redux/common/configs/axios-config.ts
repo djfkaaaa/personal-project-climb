@@ -3,6 +3,7 @@ import axios from "axios"
 
 
 export default function AxiosConfig(){
+    console.log("콘솔은 먹는지")
     return {
         headers: {
             "Cache-Control": "no-cache",

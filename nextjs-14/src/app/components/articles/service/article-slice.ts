@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./article-init";
-import { getArticles } from "./article-service";
+import { fetchOneArticle, getArticles } from "./article-service";
 import { Pending } from "@mui/icons-material";
 import { findAllArticlesAPI} from "./article-api";
-
-const articleThunks = [getArticles]
 
 const status = {
     pending : 'pending',
@@ -14,14 +12,6 @@ const status = {
 
 
 
-const handlePending = (state:any) => {
-    
-}
-
-
-const handleRejected = (state:any) => {
-    
-}
 
 const handleFulfilled = (state:any,{payload}:any) => {
     console.log('--------conclusion--------')
@@ -40,12 +30,17 @@ export const articleSlice = createSlice({
 
         builder
         .addCase(getArticles.fulfilled, handleFulfilled)
+        .addCase(fetchOneArticle.fulfilled, handleFulfilled)
     }
 })
 
 export const getAllArticles = (state : any) => {
     console.log('------------Before useSelector--------------')
     console.log(JSON.stringify(state.article.array))
+    return state.article.array;
+}
+
+export const getArticleById = (state : any) => {
     return state.article.array;
 }
 

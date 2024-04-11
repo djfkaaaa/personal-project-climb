@@ -5,11 +5,12 @@ export const initialState: IUser = {
     username: "",
     password: "",
     name: "",
-    phone: "",
+    phoneNumber: "",
     job: "",
     articles: "",
     regDate: "",
     modDate: "",
-    array: []
+    array: [],
+    json:{}
 }
 // 데이터 컬럼값 초기화부

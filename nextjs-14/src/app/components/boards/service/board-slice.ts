@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getBoards } from "./board-service"
+import { fetchOneBoard, getBoards } from "./board-service"
 import { initialState } from "./board-init"
 
-const articleThunks = [getBoards]
 
 const status = {
     pending : 'pending',
@@ -38,12 +37,17 @@ export const boardSlice = createSlice({
 
         builder
         .addCase(getBoards.fulfilled, handleFulfilled)
+        .addCase(fetchOneBoard.fulfilled, handleFulfilled)
     }
 })
 
 export const getAllBoards = (state : any) => {
     console.log('------------Before useSelector--------------')
     console.log(JSON.stringify(state.board.array))
+    return state.board.array;
+}
+
+export const getBoardById = (state:any) => {
     return state.board.array;
 }
 

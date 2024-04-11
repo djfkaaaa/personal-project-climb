@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import MuiDemoRows from '@/app/components/demos/mui-demo-rows';
 import MuiDemoColumns from '@/app/components/demos/mui-demo-columns';
-import CompaniesRow from '@/app/components/boards/companies-rows';
+
 import CompaniesColumns from '@/app/components/demos/companies-columns';
 
 export default function DataGridDemo() {
