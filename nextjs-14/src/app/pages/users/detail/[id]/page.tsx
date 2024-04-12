@@ -15,7 +15,6 @@ export default function UsersPage({params}:any){
     const router = useRouter()
     const dispatch = useDispatch()
     const getUsers:IUser = useSelector(getUserById)
-    // getter(suplier)
     
     useEffect(()=>{
         dispatch(fetchOneUser(params.id))
@@ -33,6 +32,8 @@ export default function UsersPage({params}:any){
     
     const postJava = () => {
         dispatch(modifyUser(getUsers))
+        alert("수정이 완료되었습니다.")
+        location.reload();
     }
     
     return(

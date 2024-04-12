@@ -30,4 +30,3 @@ export const modifyUser : any = createAsyncThunk(
     async (user:IUser)=>
         (await fetchModiUserAPI(user)))
         
-//slice는 dispatch를 위한 페이지, selector는 slice를 위한 페이지

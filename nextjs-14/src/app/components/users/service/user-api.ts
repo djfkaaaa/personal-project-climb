@@ -16,16 +16,6 @@ export const fetchAllUsersAPI = async (page: number) =>{
     }
 }
 
-// export const fetchOneUserAPI = async (id: number) => {
-//     try{
-//         const response = await instance.get('/users/detail',{
-//             params: {id}
-//         })
-//         return response.data
-//     }catch(error){
-//         return error
-//     }
-// }
 export const fetchOneUserAPI = async (id: number) => {
         return(await instance.get('/users/detail',{
             params: {id}
