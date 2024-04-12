@@ -5,7 +5,7 @@ import { fetchAllUsers, fetchCount } from "@/app/components/users/service/user-s
 import { getAllUsers, getUserCount } from "@/app/components/users/service/user-slice"
 import { DataGrid } from "@mui/x-data-grid"
 import { NextPage } from "next"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 

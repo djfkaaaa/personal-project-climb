@@ -14,16 +14,6 @@ export const fetchOneUser: any = createAsyncThunk(
     async (id: number) => 
         (await fetchOneUserAPI(id)))
 
-export const modifyUser : any = createAsyncThunk(
-    'users/modifyUser',
-    async (user:IUser)=>
-        (await fetchModiUserAPI(user)))
-
-export const reHandleClickChange : any = createAsyncThunk(
-    'users/reHandleClickChange',
-    async (user:IUser)=>
-        (await fetchModiUserAPI(user)))
-
 export const fetchCount: any = createAsyncThunk(
     'users/fetchCount',
     async ()=>
@@ -34,6 +24,10 @@ export const deleteUser : any = createAsyncThunk(
     async (id : number) => 
         (await fetchDeleteUserAPI(id)))
 
-
-
+////////////////////////modify//////////////////////////////
+export const modifyUser : any = createAsyncThunk(
+    'users/modifyUser',
+    async (user:IUser)=>
+        (await fetchModiUserAPI(user)))
+        
 //slice는 dispatch를 위한 페이지, selector는 slice를 위한 페이지

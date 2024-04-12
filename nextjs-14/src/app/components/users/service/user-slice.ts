@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { initialState } from "./user-init";
-import { fetchAllUsers, fetchCount, fetchOneUser, modifyUser, reHandleClickChange } from "./user-service";
+import { fetchAllUsers, fetchCount, fetchOneUser, modifyUser } from "./user-service";
 
 const status = {
     pending: 'pending',
@@ -15,16 +15,18 @@ export const userSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        
+        reHandleClickPw: (state:any, {payload}) => {state.json.password = payload},
+        reHandleClickPn: (state:any, {payload}) => {state.json.phoneNumber = payload},
+        reHandleClickJob: (state:any, {payload}) => {state.json.job = payload}
     },
     extraReducers: builder => {
-        const {pending, rejected} = status;
+        // const {pending, rejected} = status;
         builder 
         .addCase(fetchAllUsers.fulfilled, (state: any, {payload}: any) => {state.array=payload}) 
         .addCase(fetchOneUser.fulfilled, (state: any, {payload}: any) => {state.json=payload})
-        .addCase(modifyUser.fulfilled,(state: any,{payload}:any)=>{})
+        // .addCase(modifyUser.fulfilled,(state: any,{payload}:any)=>{})
+        .addCase(modifyUser.fulfilled,()=>{})
         .addCase(fetchCount.fulfilled,(state: any, {payload}:any)=>{state.count=payload})
-        .addCase(reHandleClickChange.fulfilled,(state: any,{payload}:any)=>{state.json.password,state.json.phoneNumber,state.json.job = payload})
         // addCase가 api를 통해 날린 통신에 대한 응답을 기다리는 역할?
         // 자바로 따지면 위 구문은 switch case문, ex fetchAllUsers가 fulfilled이면 hanleFulfilled 실행
 
@@ -47,12 +49,12 @@ export const getUserById = (state: any) => state.user.json;
 export const getUserCount = (state: any) => state.user.count;
 
 
-export const getFixUser = (state: any) => {
-    console.log('------------------ get change fix user db ---------------')
-    console.log(JSON.stringify(state.user.array))
-    return state.user.array; 
-}
+// export const getFixUser = (state: any) => {
+//     console.log('------------------ get change fix user db ---------------')
+//     console.log(JSON.stringify(state.user.array))
+//     return state.user.array; 
+// }
 
-export const {  } = userSlice.actions
-
+export const {reHandleClickPw, reHandleClickPn, reHandleClickJob  } = userSlice.actions
+// , reHandleClickPn, reHandleClickJob
 export default userSlice.reducer;
