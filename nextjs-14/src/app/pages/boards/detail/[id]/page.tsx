@@ -21,8 +21,8 @@ export default function BoardPage(props:any){
         <>
         <h2>보드 상세 페이지</h2>
         <span>Num : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getBoard.id}</Typography>
-        <span>게시판 이름 : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getBoard.boardName}</Typography>
-        <span>게시판 타입 : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getBoard.boardType}</Typography>
+        <span>게시판 이름 : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getBoard.title}</Typography>
+        <span>게시판 타입 : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getBoard.description}</Typography>
         </>
     )
 }

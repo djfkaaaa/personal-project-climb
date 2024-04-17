@@ -21,8 +21,6 @@ export default function ArticlePage(props:any){
         <span>Num : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getArticle.id}</Typography>
         <span>제목 : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getArticle.title}</Typography>
         <span>내용 : </span><Typography textAlign="center" sx={{fontSize:"1.2rem"}}>{getArticle.content}</Typography>
-        
-
         </>
     )
 }

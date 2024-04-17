@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./article-init";
-import { fetchOneArticle, getArticles } from "./article-service";
+import { fetchOneArticle, findarticlebyboard, getArticles } from "./article-service";
 import { Pending } from "@mui/icons-material";
 import { findAllArticlesAPI} from "./article-api";
 
@@ -31,6 +31,7 @@ export const articleSlice = createSlice({
         builder
         .addCase(getArticles.fulfilled, handleFulfilled)
         .addCase(fetchOneArticle.fulfilled, handleFulfilled)
+        .addCase(findarticlebyboard.fulfilled, handleFulfilled)
     }
 })
 
@@ -43,6 +44,8 @@ export const getAllArticles = (state : any) => {
 export const getArticleById = (state : any) => {
     return state.article.array;
 }
+
+
 
 export const {} = articleSlice.actions
 

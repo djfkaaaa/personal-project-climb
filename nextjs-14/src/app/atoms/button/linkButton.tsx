@@ -24,6 +24,7 @@ export const linkButtonTiltes = [
     {id: 1, title:'게시글목록', path:`${PG.ARTICLE}`},
     {id: 2, title:'게시판목록', path:`${PG.BOARD}`},
     {id: 3, title:'카운터', path:`${PG.COUNT}/demos/redux-counter`},
+    {id: 4, title:'보드아이디 아티클 테스트', path:`${PG.ARTICLE}/getBoardId`}
 ]
 
 export const settings = []

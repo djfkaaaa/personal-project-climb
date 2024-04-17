@@ -3,6 +3,12 @@ import { fetchOneBoard, getBoards } from "./board-service"
 import { IBoards } from "../model/board-model"
 
 
+const status = {
+    pending : 'pending',
+    fulfilled : 'fulfilled',
+    rejected : 'rejected'
+}
+
 interface BoardState{
     json ?: IBoards,
     array ?: Array<IBoards>
@@ -12,23 +18,6 @@ interface BoardState{
 export const initialState:BoardState = {
     json : {} as IBoards,
     array : []
-}
-
-const status = {
-    pending : 'pending',
-    fulfilled : 'fulfilled',
-    rejected : 'rejected'
-}
-
-
-
-const handlePending = (state:any) => {
-    
-}
-
-
-const handleRejected = (state:any) => {
-    
 }
 
 const handleFulfilled = (state:any,{payload}:any) => {
@@ -44,10 +33,8 @@ export const boardSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers: builder => {
-        const {pending,rejected} = status;
-
         builder
-        .addCase(getBoards.fulfilled,(state: any, {payload}: any) => {state.json=payload})
+        .addCase(getBoards.fulfilled,(state: any, {payload}: any) => {state.array=payload})
         .addCase(fetchOneBoard.fulfilled, handleFulfilled)
     }
 })

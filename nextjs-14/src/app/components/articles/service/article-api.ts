@@ -22,3 +22,14 @@ export const findOneArticleAPI = async (id:number) => {
         return error
     }
 }
+
+export const findarticlebyAPI = async (id:number) => {
+    try{
+        const response = await instance.get('/articles/byBoardId',{
+            params:{id}
+        })
+        return response.data
+    }catch(error){
+        return error
+    }
+}

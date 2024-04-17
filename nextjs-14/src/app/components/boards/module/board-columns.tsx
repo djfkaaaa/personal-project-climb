@@ -27,7 +27,7 @@ export default function Columns() : GridColDef[]{
             headerName: '게시판 이름',
             renderCell: ({row}:CellType) =>
             <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>
-                 <Link href={`${PG.BOARD}/detail/${row.id}`} className="underline">{row.boardName}</Link>
+                 <Link href={`${PG.BOARD}/detail/${row.id}`} className="underline">{row.title}</Link>
                 </Typography>
         },
         {
@@ -37,7 +37,7 @@ export default function Columns() : GridColDef[]{
             field: 'boardType',
             headerName: '게시판 타입',
             renderCell: ({row}:CellType) =>
-            <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.boardType}</Typography>
+            <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>{row.description}</Typography>
         },
         {
             flex: 0.04,

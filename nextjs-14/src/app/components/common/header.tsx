@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PG } from '@/redux/common/enums/PG';
 import { useRouter } from 'next/navigation';
 import { Box, Link } from '@mui/material';
-import LinkButton, { linkButtonTiltes } from '@/app/atoms/button/linkButton';
+import LinkButton, { linkButtonTiltes } from '@/app/atoms/button/LinkButton';
 // const pages = [
 //   ['login', `/`],
 //   ['join', `${PG.USER}/join`],
