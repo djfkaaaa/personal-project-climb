@@ -33,6 +33,7 @@ export default function UsersPage({params}:any){
     const postJava = () => {
         dispatch(modifyUser(getUsers))
         alert("수정이 완료되었습니다.")
+        console.log(getUsers)
         location.reload();
     }
     

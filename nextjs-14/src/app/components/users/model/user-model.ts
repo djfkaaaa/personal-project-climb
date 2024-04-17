@@ -8,8 +8,8 @@ export interface IUser {
     articles: string,
     regDate: string,
     modDate: string,
-    array: [],
-    json: {}
+    count: number
+    
 }
 
 // 컬럼 선언부

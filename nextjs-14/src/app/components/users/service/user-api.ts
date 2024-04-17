@@ -38,6 +38,17 @@ export const fetchModiUserAPI = async (user:IUser) => {
         return(await instance.put('/users/modify',user)).data
         }
         catch(error){
+            console.log(error)
+        return error
+    }
+}
+
+export const loginUserAPI = async (user:IUser) => {
+    try{
+        const response = await instance.post('/users/login',user)
+        return response.data
+    }catch(error){
+        console.log(error)
         return error
     }
 }

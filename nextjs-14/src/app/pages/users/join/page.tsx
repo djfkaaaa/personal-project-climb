@@ -34,11 +34,11 @@ export default function join(){
     e.preventDefault()
         alert('리스트가 가져가는 이름 = ' + username + ' '+ password + ' ' +name + ' ' +phoneNumber + ' '+job )
     const url = `${process.env.NEXT_PUBLIC_API_URL}/users/save` 
-    const data = {username,password,name,phoneNumber,job} // 자바의 requestbody
+    const data = {username,password,name,phoneNumber,job} 
     const config = AxiosConfig()
     axios.post(url,data,config)
     .then(res=>
-        {alert(JSON.stringify(res.data)) // 자바의 responsebody < return하는 map에 담기는놈
+        {alert(JSON.stringify(res.data)) 
         router.push(`${PG.USER}/login`)
         })
     }

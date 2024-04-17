@@ -1,7 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { fetchOneBoard, getBoards } from "./board-service"
-import { initialState } from "./board-init"
+import { IBoards } from "../model/board-model"
 
+
+interface BoardState{
+    json ?: IBoards,
+    array ?: Array<IBoards>
+}
+
+
+export const initialState:BoardState = {
+    json : {} as IBoards,
+    array : []
+}
 
 const status = {
     pending : 'pending',
@@ -36,7 +47,7 @@ export const boardSlice = createSlice({
         const {pending,rejected} = status;
 
         builder
-        .addCase(getBoards.fulfilled, handleFulfilled)
+        .addCase(getBoards.fulfilled,(state: any, {payload}: any) => {state.json=payload})
         .addCase(fetchOneBoard.fulfilled, handleFulfilled)
     }
 })

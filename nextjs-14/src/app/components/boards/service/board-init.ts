@@ -2,10 +2,9 @@ import { IBoards } from "../model/board-model";
 
 export const initialState : IBoards = {
     id: 0,
-    boardName : "",
-    boardType : "",
+    title : "",
+    description : "",
     article : "",
     regDate : "",
-    modDate : "",
-    array: [],
+    modDate : ""
 }

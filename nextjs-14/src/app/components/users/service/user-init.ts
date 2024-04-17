@@ -10,7 +10,7 @@ export const initialState: IUser = {
     articles: "",
     regDate: "",
     modDate: "",
-    array: [],
-    json:{}
+    count: 0,
+    
 }
 // 데이터 컬럼값 초기화부
